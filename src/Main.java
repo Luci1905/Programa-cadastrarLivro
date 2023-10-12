@@ -10,6 +10,7 @@ public class Main {
         System.out.println("Bem vindo ao sistema de cadastro de livros");
 
         ArrayList<Livro> listaLivro = new ArrayList<>();
+        Livro metodoLivro = new Livro();
 
         Scanner leitor = new Scanner(System.in);
 
@@ -39,23 +40,20 @@ public class Main {
                     Period Lanc = Period.between(novoLivro.dataLanc, LocalDate.now());
 
                     if (Lanc.getYears() > 5) {
+                        metodoLivro.cadastrarLivro(novoLivro);
+
                         System.out.println("Data Valida!");
                     }else {
                         System.out.println("Idade Invalida");
-                        break;
                     }
-
-                    listaLivro.add(novoLivro);
-
-                    System.out.println("Cadastro realizado com sucesso!");
 
                     break;
 
                 case "2":
 
-                    if (listaLivro.size() > 0) {
+                    if (metodoLivro.listarLivros().size() > 0) {
 
-                        for (Livro cadaLivro: listaLivro){
+                        for (Livro cadaLivro: metodoLivro.listarLivros()){
                             System.out.println("titulo: " + cadaLivro.titulo );
                             System.out.println("nome: " + cadaLivro.nome);
                             System.out.println("preco: " + cadaLivro.preco);
